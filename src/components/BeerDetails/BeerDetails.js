@@ -22,7 +22,7 @@ function BeerDetails (props) {
         </React.Fragment>
       )
     } else {
-      return <h2>Beer Not Found</h2>
+      return <h2 className='beer__error'>Beer Not Found</h2>
     }
   }
 

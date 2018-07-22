@@ -1,7 +1,6 @@
 .beer-list > .beer-list__item {
   display: flex;
   flex-direction: column;
-  padding: 16px;
   border-bottom: 1px solid rgba(0,0,0,.1);
   cursor: pointer;
 }
@@ -11,19 +10,17 @@
 }
 
 .beer-list__item a {
+  display: block;
+  padding: 16px;
   text-decoration: none;
 }
 
-.beer-list__item.beer__name {
+.beer-list__item .beer__name {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.beer-list__item.beer__tag {
+.beer-list__item .beer__tag {
   font-size: .85rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   color: rgba(0, 0, 0, 0.6);
   padding: 4px 0;
-  border-radius: 4px;
 }

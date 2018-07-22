@@ -8,7 +8,7 @@
   color: rgba(0,0,0,.87);
 }
 
-.beer h2 {
+.beer .beer__error {
   text-align: center;
 }
 

@@ -8,9 +8,11 @@ function Landing () {
   return (
     <div className='landing'>
       <i className='fas fa-long-arrow-alt-down fa-4x' />
-      <Button>
-        <Link to='beers'>Beers</Link>
-      </Button>
+
+      <Link to='beers'>
+        <Button>Beers</Button>
+      </Link>
+
     </div>
   )
 }
