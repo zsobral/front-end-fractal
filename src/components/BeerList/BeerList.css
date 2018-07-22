@@ -1,0 +1,36 @@
+.beer-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.beer-list {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.beer-list__page {
+  padding: 8px;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.beer-list__page--right {
+  justify-content: flex-end;
+}
+
+.beer-list__page--left {
+  justify-content: flex-start;
+}
+
+.beer-list__page .button + .button {
+  margin-left: 5px;
+}

@@ -1,0 +1,32 @@
+.beer {
+  padding: 24px;
+}
+
+.beer .beer__name {
+  font-size: 2rem;
+  text-align: center;
+  color: rgba(0,0,0,.87);
+}
+
+.beer h2 {
+  text-align: center;
+}
+
+.beer .beer__tag {
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-align: center;
+  color: rgba(0,0,0,.6);
+}
+
+.beer .beer__img {
+  margin: 24px auto;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+}
+
+.beer .beer__img img {
+  max-width: 100%;
+  max-height: 100%;
+}

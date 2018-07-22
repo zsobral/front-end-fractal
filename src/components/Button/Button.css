@@ -1,0 +1,33 @@
+.button {
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.button.button--rounded {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+}
+
+.button.button--flat {
+  background: transparent;
+}
+
+.button.button--flat:hover {
+  background: rgba(0,0,0,.1);
+}
+
+.button a {
+  text-decoration: none;
+  color: #000000;
+}

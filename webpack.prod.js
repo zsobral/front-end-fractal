@@ -10,6 +10,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   mode: 'production',
   entry: [
+    'babel-polyfill',
     path.resolve(__dirname, 'polyfills.js'),
     path.resolve(__dirname, 'src/index.js')
   ],

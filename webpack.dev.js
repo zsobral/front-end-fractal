@@ -8,16 +8,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: 'development',
   entry: [
+    'babel-polyfill',
     path.resolve(__dirname, 'polyfills.js'),
     path.resolve(__dirname, 'src/index.js')
   ],
   output: {
-    filename: 'index.js'
+    filename: 'index.js',
+    publicPath: '/'
   },
   devServer: {
     hot: true,
     port: 3000,
-    publicPath: '/'
+    contentBase: path.resolve(__dirname, './'),
+    historyApiFallback: true
   },
   module: {
     strictExportPresence: true,
