@@ -2,11 +2,11 @@ import { call, take, put, select } from 'redux-saga/effects'
 
 import * as api from '../api'
 
-const LOAD_BEERS_REQUEST = 'LOAD_BEERS_REQUEST'
-const LOAD_BEERS_SUCCESS = 'LOAD_BEERS_SUCCESS'
-const LOAD_BEERS_FAILURE = 'LOAD_BEERS_FAILURE'
+export const LOAD_BEERS_REQUEST = 'LOAD_BEERS_REQUEST'
+export const LOAD_BEERS_SUCCESS = 'LOAD_BEERS_SUCCESS'
+export const LOAD_BEERS_FAILURE = 'LOAD_BEERS_FAILURE'
 
-const CHANGE_PAGE = 'CHANGE_PAGE'
+export const CHANGE_PAGE = 'CHANGE_PAGE'
 
 const initialState = {
   beers: [],
@@ -62,11 +62,13 @@ export function loadBeersFailure (error) {
   return { type: LOAD_BEERS_FAILURE, error }
 }
 
+export const getPageSize = state => state.pageSize
+
 // const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-function * loadBeersSaga (page) {
+export function * loadBeersSaga (page) {
   try {
-    const pageSize = yield select(state => state.pageSize)
+    const pageSize = yield select(getPageSize)
     const response = yield api.getBeers(page, pageSize)
     // yield delay(2000)
     yield put(loadBeersSuccess(response.data, page))
