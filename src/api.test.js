@@ -1,4 +1,4 @@
-import * as api from './index'
+import * as api from './api'
 
 describe('api', () => {
   it('should return an array of beers', async () => {

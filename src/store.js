@@ -1,6 +1,6 @@
 import { call, take, put, select } from 'redux-saga/effects'
 
-import * as api from '../api'
+import * as api from './api'
 
 export const LOAD_BEERS_REQUEST = 'LOAD_BEERS_REQUEST'
 export const LOAD_BEERS_SUCCESS = 'LOAD_BEERS_SUCCESS'
@@ -64,13 +64,10 @@ export function loadBeersFailure (error) {
 
 export const getPageSize = state => state.pageSize
 
-// const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
-
 export function * loadBeersSaga (page) {
   try {
     const pageSize = yield select(getPageSize)
     const response = yield api.getBeers(page, pageSize)
-    // yield delay(2000)
     yield put(loadBeersSuccess(response.data, page))
   } catch (error) {
     yield put(loadBeersFailure(error))

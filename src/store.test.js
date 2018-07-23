@@ -1,3 +1,4 @@
+import sinon from 'sinon'
 import { take, call, select, put } from 'redux-saga/effects'
 import appReducer, {
   changePage,
@@ -8,7 +9,8 @@ import appReducer, {
   watchBeersSaga,
   getPageSize,
   LOAD_BEERS_REQUEST
-} from './index'
+} from './store'
+import * as api from './api'
 
 describe('App Reducer', () => {
   let state
@@ -63,26 +65,31 @@ describe('App Reducer', () => {
 
 describe('App Sagas', () => {
   describe('loadBeersSaga', () => {
-    const page = 1
-    const saga = loadBeersSaga(page)
-
     it('should call loadBeersSuccess action if it requests the data successfully', () => {
-      const response = { data: [] }
+      const page = 1
+      const response = { data: ['beer', 'beer', 'beer'] }
+      const saga = loadBeersSaga(page)
+      sinon.stub(api, 'getBeers').callsFake(() => response)
       expect(saga.next().value).toEqual(select(getPageSize))
-      saga.next(page)
+      expect(saga.next(page).value).toEqual(response)
       expect(saga.next(response).value).toEqual(put(loadBeersSuccess(response.data, page)))
+      expect(saga.next().done).toBeTruthy()
     })
 
     it('should call loadBeersFailure action if the response errors', () => {
-      // TODO
+      const page = 1
+      const response = new Error('error')
+      const saga = loadBeersSaga(page)
+      expect(saga.next().value).toEqual(select(getPageSize))
+      expect(saga.throw(response).value).toEqual(put(loadBeersFailure(response)))
+      expect(saga.next().done).toBeTruthy()
     })
   })
 
   describe('watchBeersSaga', () => {
-    const saga = watchBeersSaga()
-
     it('should start task to watch for LOAD_BEER_REQUEST action', () => {
       const page = 1
+      const saga = watchBeersSaga()
       expect(saga.next().value).toEqual(take(LOAD_BEERS_REQUEST))
       expect(saga.next({ page }).value).toEqual(call(loadBeersSaga, page))
     })

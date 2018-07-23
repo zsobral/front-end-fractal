@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import * as api from '../../api'
 import BeerDetails from '../../components/BeerDetails'
 
-class BeerDetailsPage extends React.Component {
+export class BeerDetailsPage extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
