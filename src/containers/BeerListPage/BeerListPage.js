@@ -4,13 +4,9 @@ import * as actions from '../../store'
 
 import { BeerList, BeerListItem } from '../../components/BeerList'
 
-class BeerListPage extends React.Component {
+export class BeerListPage extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      page: 1,
-      beers: []
-    }
     this.getBeers = this.getBeers.bind(this)
     this.handleOnClickPrevPage = this.handleOnClickPrevPage.bind(this)
     this.handleOnClickNextPage = this.handleOnClickNextPage.bind(this)
